@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('QR Code List') }}</div>
+                <div class="card-header">{{ __('QR Form List') }}</div>
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -13,11 +13,9 @@
                             <thead class="table-dark">
                               <tr>
                                 <th scope="col" class="align-top">{{ __('No') }}</th>
-                                <th scope="col" class="align-top">{{ __('QR Code') }}</th>
                                 <th scope="col" class="align-top">{{ __('UID') }}</th>
-                                <th scope="col" class="align-top">{{ __('QR Form UID') }}</th>
                                 <th scope="col" class="align-top">{{ __('Added On') }}</th>
-                                <th scope="col" class="align-top">{{ __('View Data') }}</th>
+                                <th scope="col" class="align-top">{{ __('View Form') }}</th>
                                 <th scope="col" class="align-top">{{ __('Delete') }}</th>
                               </tr>
                             </thead>
@@ -25,14 +23,7 @@
                                 @for ($i = 0; $i < 10; $i++)
                                     <tr>
                                         <th scope="row">{{ $i + 1 }}</th>
-                                        <td>
-                                            <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 5em">
-                                        </td>
                                         {{-- Temporary UID placeholder --}}
-                                        <td>
-                                            <a href="" class="text-dark">{{ Str::limit(Str::random(30), 15) }}</a>
-                                        </td>
-                                        {{-- Temporary QR Form UID placeholder --}}
                                         <td>
                                             <a href="" class="text-dark">{{ Str::limit(Str::random(30), 15) }}</a>
                                         </td>
