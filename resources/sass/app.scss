@@ -6,3 +6,14 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// Bootstrap Icons
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+// Bootstrap Icons fonts
+@font-face {
+    font-display: block;
+    font-family: "bootstrap-icons";
+    src: url("bootstrap-icons/font/fonts/bootstrap-icons.woff2?8d200481aa7f02a2d63a331fc782cfaf") format("woff2"),
+  url("bootstrap-icons/font/fonts/bootstrap-icons.woff?8d200481aa7f02a2d63a331fc782cfaf") format("woff");
+}

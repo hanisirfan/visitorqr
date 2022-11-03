@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'formqr') }}</title>
+    {{-- Favicon --}}
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/img/logo/favicon.ico') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,7 +23,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 2em">
+                    <span class="ms-2 fw-bold">{{ config('app.name', 'Laravel') }} <span class="text-warning">by Hanis Irfan</span></span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -76,5 +79,8 @@
             @yield('content')
         </main>
     </div>
+    <footer class="container-fluid text-center">
+        <p>{{ env('APP_COPYRIGHT', 'Copyright Notice') }}</p>
+    </footer>
 </body>
 </html>
