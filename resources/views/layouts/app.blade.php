@@ -80,6 +80,7 @@
         </main>
     </div>
     <footer class="container-fluid text-center">
+        <a href="https://github.com/hanisirfan/formqr" class="p-0 m-0 text-dark">formqr {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
         <p>{{ env('APP_COPYRIGHT', 'Copyright Notice') }}</p>
     </footer>
 </body>
