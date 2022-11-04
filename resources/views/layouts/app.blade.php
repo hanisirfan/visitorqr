@@ -24,7 +24,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 2em">
-                    <span class="ms-2 fw-bold">{{ config('app.name', 'Laravel') }} <span class="text-warning">by Hanis Irfan</span></span>
+                    <span class="ms-2 fw-bold">{{ config('app.name', 'Laravel') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -96,7 +96,7 @@
     </div>
     <footer class="container-fluid text-center">
         <a href="https://github.com/hanisirfan/formqr" class="p-0 m-0 text-dark">formqr {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
-        <p>{{ env('APP_COPYRIGHT', 'Copyright Notice') }}</p>
+        <p>Copyright © <a href="https://www.hanisirfan.xyz" class="text-dark">Hanis Irfan</a> {{ env('COPYRIGHT_YEAR', '2022') }}</p>
     </footer>
 </body>
 </html>

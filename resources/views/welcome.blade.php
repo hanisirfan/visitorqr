@@ -27,7 +27,6 @@
                 <div class="row d-flex justify-content-center align-items-center">
                     <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 10em">
                     <h1 class="m-0 fw-bold">formqr</h1>
-                    <h3 class="m-0"><a href="https://www.hanisirfan.xyz" class="text-decoration-none text-warning fw-bold">by Hanis Irfan</a></h3>
                 </div>
                 <div class="row d-flex gap-4 mt-5 justify-content-center align-items-center">
                     @if (Route::has('login'))
@@ -46,7 +45,7 @@
                 </div>
                 <div class="row mt-5 fs-6">
                     <a href="https://github.com/hanisirfan/formqr" class="p-0 m-0 text-dark">formqr {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
-                    <p>{{ env('APP_COPYRIGHT', 'Copyright Notice') }}</p>
+                    <p>Copyright © <a href="https://www.hanisirfan.xyz" class="text-dark">Hanis Irfan</a> {{ env('COPYRIGHT_YEAR', '2022') }}</p>
                 </div>
             </div>
         </div>
