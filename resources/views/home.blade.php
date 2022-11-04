@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('QR Code List') }}</div>
+                <div class="card-header"><i class="bi bi-list"></i> {{ __('QR Code List') }}</div>
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -17,7 +17,8 @@
                                 <th scope="col" class="align-top">{{ __('UID') }}</th>
                                 <th scope="col" class="align-top">{{ __('QR Form UID') }}</th>
                                 <th scope="col" class="align-top">{{ __('Added On') }}</th>
-                                <th scope="col" class="align-top">{{ __('View Data') }}</th>
+                                <th scope="col" class="align-top">{{ __('View') }}</th>
+                                <th scope="col" class="align-top">{{ __('Update') }}</th>
                                 <th scope="col" class="align-top">{{ __('Delete') }}</th>
                               </tr>
                             </thead>
@@ -41,6 +42,9 @@
                                         </td>
                                         <td>
                                             <a href="" class="btn btn-dark"><i class="bi bi-eye"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-dark"><i class="bi bi-pen"></i></a>
                                         </td>
                                         <td>
                                             <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>

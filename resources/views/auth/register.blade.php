@@ -64,7 +64,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-dark">
-                                    {{ __('Register') }}
+                                    <i class="bi bi-person-plus"></i> {{ __('Add User') }}
                                 </button>
                             </div>
                         </div>
