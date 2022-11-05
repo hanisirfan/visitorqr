@@ -57,7 +57,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('qrforms') }}"><i class="bi bi-list"></i> {{ __('List') }}</a>
-                                    <a class="dropdown-item" href="{{ route('qrforms') }}"><i class="bi bi-plus"></i> {{ __('Add') }}</a>
+                                    <a class="dropdown-item" href="{{ route('qrforms.add') }}"><i class="bi bi-plus"></i> {{ __('Add') }}</a>
                                 </div>
                             </li>
 

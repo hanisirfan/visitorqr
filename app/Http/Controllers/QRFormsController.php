@@ -25,4 +25,9 @@ class QRFormsController extends Controller
     {
         return view('qrforms.list');
     }
+
+    public function create()
+    {
+        return view('qrforms.add');
+    }
 }
