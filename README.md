@@ -8,7 +8,9 @@
 ## Project installation
 
 Run these commands to compile the assets and install the project.
+
 `composer compile-project`
+
 `php artisan install PASSWORD USER_NAME EMAIL_ADDRESS`
 
 ## Copyright
