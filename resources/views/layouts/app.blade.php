@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'formqr') }}</title>
+    <title>{{ config('app.name', 'visitorqr') }}</title>
     {{-- Favicon --}}
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/img/logo/favicon.ico') }}">
 
@@ -95,7 +95,7 @@
         </main>
     </div>
     <footer class="container-fluid text-center">
-        <a href="https://github.com/hanisirfan/formqr" class="p-0 m-0 text-dark">formqr {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
+        <a href="https://github.com/hanisirfan/visitorqr" class="p-0 m-0 text-dark">{{ config('app.name', 'visitorqr') }} {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
         <p>Copyright © <a href="https://www.hanisirfan.xyz" class="text-dark">Hanis Irfan</a> {{ env('COPYRIGHT_YEAR', '2022') }}</p>
     </footer>
 </body>

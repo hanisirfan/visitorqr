@@ -7,7 +7,9 @@
 
 ## Project installation
 
-Run these commands to compile the assets and install the project.
+1. Copy `.env.example` file and rename it to `.env`.
+2. Create a new database and set the newly created database details inside `.env` file.
+2. Run these commands to compile the assets and install the project.
 
 `composer compile-project`
 
@@ -17,4 +19,4 @@ Run these commands to compile the assets and install the project.
 
 Copyright (c) 2022 Muhammad Hanis Irfan Bin Mohd Zaid a.k.a. Hanis Irfan.
 
-Licensed with the MIT license.
+Licensed under the MIT license.

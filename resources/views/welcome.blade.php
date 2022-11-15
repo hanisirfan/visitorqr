@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>formqr</title>
+        <title>{{ config('app.name', 'visitorqr') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
             <div class="container w-75 text-center">
                 <div class="row d-flex justify-content-center align-items-center">
                     <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 10em">
-                    <h1 class="m-0 fw-bold">formqr</h1>
+                    <h1 class="m-0 fw-bold">{{ config('app.name', 'visitorqr') }}</h1>
                 </div>
                 <div class="row d-flex gap-4 mt-5 justify-content-center align-items-center">
                     @if (Route::has('login'))
@@ -44,7 +44,7 @@
                     @endif
                 </div>
                 <div class="row mt-5 fs-6">
-                    <a href="https://github.com/hanisirfan/formqr" class="p-0 m-0 text-dark">formqr {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
+                    <a href="https://github.com/hanisirfan/visitorqr" class="p-0 m-0 text-dark">{{ config('app.name', 'visitorqr') }} {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
                     <p>Copyright © <a href="https://www.hanisirfan.xyz" class="text-dark">Hanis Irfan</a> {{ env('COPYRIGHT_YEAR', '2022') }}</p>
                 </div>
             </div>
