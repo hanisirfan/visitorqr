@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\QRFormsController;
 use App\Http\Controllers\ScannerController;
+use App\Http\Controllers\VisitorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/qrforms', [QRFormsController::class, 'index'])->name('qrforms');
-Route::get('/qrforms/add', [QRFormsController::class, 'create'])->name('qrforms.add');
+Route::get('/visitors/add', [VisitorController::class, 'create'])->name('visitors.add');
+Route::post('/visitors/add', [VisitorController::class, 'create']);
 
 Route::get('/scanner', [ScannerController::class, 'index'])->name('scanner');
