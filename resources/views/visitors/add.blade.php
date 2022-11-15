@@ -8,7 +8,17 @@
                 <div class="card-header"><i class="bi bi-plus"></i> {{ __('Add Visitor') }}</div>
                 <div class="card-body">
                     @if(session()->has('addVisitorSuccess'))
-                        <span><div class="alert alert-success w-100 ml-1">{{ session('addVisitorSuccess') }}</div></span>
+                        <span>
+                            <div class="alert alert-success w-100 ml-1">
+                                <p class="fw-bold">{{ session('addVisitorSuccess') }}</p>
+                                <div>
+                                    <a download="{{ session('uuid') }}.png" href="{{ session('qrCode') }}" title="{{ session('uuid') }}">
+                                        <img alt="{{ session('uuid') }}" src="{{ session('qrCode') }}">
+                                    </a>
+                                    <p>Click on the QR code to download it.</p>
+                                </div>
+                            </div>
+                        </span>
                     @endif
                     <form action="" method="POST">
                         @csrf

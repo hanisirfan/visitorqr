@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Visitor;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use chillerlan\QRCode\QRCode;
 use Illuminate\Support\Facades\Auth;
 
 class VisitorController extends Controller
@@ -58,6 +59,11 @@ class VisitorController extends Controller
             ]);
 
             $request->session()->flash('addVisitorSuccess', 'Visitor successfully added!');
+
+            // Reference: https://startutorial.com/view/php-qr-code-generator-with-source-code
+            $qrCode = (new QRCode())->render('visitorqr: ' . $uuid);
+            $request->session()->flash('qrCode', $qrCode);
+            $request->session()->flash('uuid', $uuid);
 
             return back();
         }
