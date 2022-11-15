@@ -47,12 +47,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "install-project": [
+        "compile-project": [
             "npm install && npm run build",
-            "composer install",
-            "@php artisan storage:link",
-            "@php artisan migrate",
-            "@php artisan key:generate"
+            "composer install"
         ]
     },
     "extra": {
