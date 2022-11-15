@@ -4,7 +4,7 @@
 1. Web server with PHP version ^8.1 support.
 2. PHP extensions: curl, exif, fileinfo, gd, intl, mbstring, mysqli, openssl, pdo_mysql, sodium, xsl
 
-    I listed every extensions enabled on my development enviroment. I don't really know what extensions required for packages installed :laughing:
+    I listed every extensions enabled on my development environment. I don't really know what extensions required for packages the installed :laughing:
 
 3. NodeJS version ^14.18.0.
 4. Composer version ^2.3.10
