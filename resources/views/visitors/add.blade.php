@@ -7,6 +7,9 @@
             <div class="card">
                 <div class="card-header"><i class="bi bi-plus"></i> {{ __('Add Visitor') }}</div>
                 <div class="card-body">
+                    @if(session()->has('addVisitorSuccess'))
+                        <span><div class="alert alert-success w-100 ml-1">{{ session('addVisitorSuccess') }}</div></span>
+                    @endif
                     <form action="" method="POST">
                         @csrf
                         <div class="form-floating mb-3">
