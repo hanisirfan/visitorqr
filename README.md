@@ -2,8 +2,12 @@
 
 ## Requirements
 1. Web server with PHP version ^8.1 support.
-2. NodeJS version ^14.18.0.
-3. Composer version ^2.3.10
+2. PHP extensions: curl, exif, fileinfo, gd, intl, mbstring, mysqli, openssl, pdo_mysql, sodium, xsl
+
+    I listed every extensions enabled on my development enviroment. I don't really know what extensions required for packages installed :laughing:
+
+3. NodeJS version ^14.18.0.
+4. Composer version ^2.3.10
 
 ## Project installation
 
