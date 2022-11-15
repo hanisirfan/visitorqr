@@ -25,5 +25,6 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/qrforms', [QRFormsController::class, 'index'])->name('qrforms');
+Route::get('/qrforms/add', [QRFormsController::class, 'create'])->name('qrforms.add');
 
 Route::get('/scanner', [ScannerController::class, 'index'])->name('scanner');
