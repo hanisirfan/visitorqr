@@ -11,9 +11,10 @@
 
 ## Project installation
 
-1. Copy `.env.example` file and rename it to `.env`.
-2. Create a new database and set the newly created database credentials inside `.env` file.
-2. Run these commands to compile the assets and install the project.
+1. Download the release or clone this project inside your web server root folder. Make sure Virtualhost / Server block is configured correctly to point `/public` as document root.
+2. Copy `.env.example` file and rename it to `.env`.
+3. Create a new database and set the newly created database credentials inside `.env` file.
+4. Run these commands to compile the assets and install the project.
 
     `composer compile-project`
 
