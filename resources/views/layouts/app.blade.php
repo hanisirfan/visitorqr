@@ -17,6 +17,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @bukStyles(true)
 </head>
 <body>
     <div id="app">
@@ -95,5 +96,6 @@
         <a href="https://github.com/hanisirfan/visitorqr" class="p-0 m-0 text-dark">{{ config('app.name', 'visitorqr') }} {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
         <p>Copyright © <a href="https://www.hanisirfan.xyz" class="text-dark">Hanis Irfan</a> {{ env('COPYRIGHT_YEAR', '2022') }}</p>
     </footer>
+    @bukScripts(true)
 </body>
 </html>

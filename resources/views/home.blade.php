@@ -30,14 +30,14 @@
                                                     <img alt="{{ $visitor->uuid }}" src="{{ $visitor->qr }}" class="img-fluid" style="width: 12em">
                                                 </a>
                                             </td>
-                                            <td class="align-middle">
+                                            <td>
                                                 <p>{{ $visitor->uuid }}</p>
                                             </td>
-                                            <td class="align-middle">
+                                            <td>
                                                 <p>{{ $visitor->name }}</p>
                                             </td>
-                                            <td class="align-middle">
-                                                <p>{{ $visitor->visit_datetime }}</p>
+                                            <td>
+                                                <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
                                             </td>
                                             <td>
                                                 <a href="" class="btn btn-dark"><i class="bi bi-eye"></i></a>

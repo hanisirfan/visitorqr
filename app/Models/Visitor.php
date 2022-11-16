@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use chillerlan\QRCode\QRCode;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -14,7 +15,7 @@ class Visitor extends Model
 
     protected $primaryKey = 'uuid';
 
-    protected $appends = ['qr'];
+    protected $appends = ['qr', 'date_time'];
 
     /**
      * Generate QR based on UUIDs
@@ -23,6 +24,15 @@ class Visitor extends Model
     public function getQRAttribute() {
         return (new QRCode())->render('visitorqr: ' . $this->uuid);
     }
+
+    /**
+     * Generate QR based on UUIDs
+     *
+     */
+    public function getDateTimeAttribute() {
+        return new DateTime($this->visit_datetime);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
