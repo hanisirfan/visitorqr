@@ -4,12 +4,15 @@ namespace App\Models;
 
 use chillerlan\QRCode\QRCode;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Visitor extends Model
 {
     use HasFactory;
     use HasUuids; // Use UUID instead of auto incremented IDs.
+
+    protected $primaryKey = 'uuid';
 
     protected $appends = ['qr'];
 
