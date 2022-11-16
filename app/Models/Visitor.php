@@ -2,18 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use chillerlan\QRCode\QRCode;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Visitor extends Model
 {
     use HasFactory;
+
+
+    protected $appends = ['qr'];
+
+    /**
+     * Generate QR based on UUIDs
+     *
+     */
+    public function getQRAttribute() {
+        return (new QRCode())->render('visitorqr: ' . $this->uuid);
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-
     protected $fillable = [
         'uuid',
         'name',

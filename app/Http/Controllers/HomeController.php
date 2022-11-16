@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +22,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        if ($request->isMethod('get')) {
+            $pagination = 5;
+
+            $visitors = Visitor::orderBy('created_at', 'DESC')->paginate($pagination)->withQueryString();
+
+            return view('home')->with(['visitors' => $visitors]);
+        }
+
     }
 }

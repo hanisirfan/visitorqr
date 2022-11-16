@@ -15,7 +15,7 @@
                                     <a download="{{ session('uuid') }}.png" href="{{ session('qrCode') }}" title="{{ session('uuid') }}">
                                         <img alt="{{ session('uuid') }}" src="{{ session('qrCode') }}">
                                     </a>
-                                    <p>Click on the QR code to download it.</p>
+                                    <p>{{ __('Click on the QR code to download it.') }}</p>
                                 </div>
                             </div>
                         </span>
