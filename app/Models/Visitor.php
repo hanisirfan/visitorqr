@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Visitor extends Model
 {
     use HasFactory;
-
+    use HasUuids; // Use UUID instead of auto incremented IDs.
 
     protected $appends = ['qr'];
 
