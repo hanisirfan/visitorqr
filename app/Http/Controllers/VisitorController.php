@@ -25,9 +25,18 @@ class VisitorController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request, $uuid)
     {
-        // return view('qrforms.list');
+        if ($request->isMethod('get')) {
+            // Check if visitor exists.
+            if (Visitor::where('uuid', $uuid)->first()) {
+                $visitor = Visitor::where('uuid', $uuid)->first();
+
+                return view('visitors.view')->with(['visitor' => $visitor]);
+            } else {
+                return abort(404);
+            }
+        }
     }
 
     public function create(Request $request)

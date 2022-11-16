@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/visitors/view/{uuid}', [VisitorController::class, 'index'])->name('visitors.view');
 Route::get('/visitors/add', [VisitorController::class, 'create'])->name('visitors.add');
 Route::post('/visitors/add', [VisitorController::class, 'create']);
 

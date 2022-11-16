@@ -4,7 +4,7 @@ function onScanSuccess(decodedText, decodedResult) {
 
     // Parsing decoded text
     // It must starts with formqr-code
-    if (decodedText.split(": ")[0] != "formqr-code") {
+    if (decodedText.split(": ")[0] != "visitorqr") {
         document.getElementById("qr-error").removeAttribute("hidden");
 
         setTimeout(() => {
@@ -14,7 +14,7 @@ function onScanSuccess(decodedText, decodedResult) {
         let parsedUID = decodedText.split(": ")[1];
 
         // Redirect to QR code data page
-        window.location.href = "/qrcodes/" + parsedUID;
+        window.location.href = "/visitors/view/" + parsedUID;
     }
   }
 
