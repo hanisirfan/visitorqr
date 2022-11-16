@@ -40,7 +40,7 @@
                                                 <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-dark"><i class="bi bi-eye"></i></a>
+                                                <a href="{{ route('visitors.view', $visitor->uuid) }}" class="btn btn-dark"><i class="bi bi-eye"></i></a>
                                             </td>
                                             <td>
                                                 <a href="" class="btn btn-dark"><i class="bi bi-pen"></i></a>

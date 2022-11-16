@@ -69,9 +69,7 @@ class VisitorController extends Controller
 
             $request->session()->flash('addVisitorSuccess', 'Visitor successfully added!');
 
-            // Reference: https://startutorial.com/view/php-qr-code-generator-with-source-code
-            $qrCode = (new QRCode())->render('visitorqr: ' . $uuid);
-            $request->session()->flash('qrCode', $qrCode);
+            $request->session()->flash('qrCode', $visitor->qr);
             $request->session()->flash('uuid', $uuid);
 
             return back();
