@@ -46,7 +46,7 @@
                                                 <a href="" class="btn btn-dark"><i class="bi bi-pen"></i></a>
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                <x-visitors.delete :visitor-uuid="$visitor->uuid"/>
                                             </td>
                                         </tr>
                                     @endforeach
