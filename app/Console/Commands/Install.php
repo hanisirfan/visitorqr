@@ -21,7 +21,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $description = 'formqr: Use composer compile-project to compile the system assets. Use this command to perform other actions (DB migration, creating admin user etc).';
+    protected $description = 'visitorqr: Use composer compile-project to compile the system assets. Use this command to perform other actions (DB migration, creating admin user etc).';
 
     /**
      * Create a new command instance.
