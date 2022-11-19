@@ -6,8 +6,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><i class="bi bi-list"></i> {{ __('Visitor List') }}</div>
-
                 <div class="card-body">
+
+                    @if(session()->has('deleteVisitorSuccess'))
+                        <span>
+                            <div class="alert alert-success w-100 ml-1">
+                                <p class="fw-bold">{{ session('deleteVisitorSuccess') }}</p>
+                                <p class="fw-bold">{{ __('UUID') }}: <span class="fw-normal">{{ session('uuid') }}</span></p>
+                            </div>
+                        </span>
+                    @endif
+
                     <div class="table-responsive">
                         <table class="table table-light table-bordered table-hover">
                             @if ($visitors->count() > 0)
@@ -43,7 +52,7 @@
                                                 <a href="{{ route('visitors.view', $visitor->uuid) }}" class="btn btn-dark"><i class="bi bi-eye"></i></a>
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-dark"><i class="bi bi-pen"></i></a>
+                                                <a href="" class="btn btn-secondary"><i class="bi bi-pen"></i></a>
                                             </td>
                                             <td>
                                                 <x-visitors.delete :visitor-uuid="$visitor->uuid"/>
@@ -52,7 +61,7 @@
                                     @endforeach
                                 </tbody>
                             @else
-                                <p>No visitors added.</p>
+                                <p>{{ __('No visitors found.') }}</p>
                             @endif
                         </table>
                         {{ $visitors->links() }}

@@ -79,4 +79,25 @@ class VisitorController extends Controller
             return view('visitors.add');
         }
     }
+
+
+    public function delete(Request $request) {
+        if ($request->isMethod('post')) {
+
+            $validated = $request->validate([
+                'delete-visitor-uuid' => ['required', 'uuid'],
+            ]);
+
+            $visitorUuid = $request->input('delete-visitor-uuid');
+            Visitor::destroy($visitorUuid);
+
+            $request->session()->flash('deleteVisitorSuccess', 'Visitor successfully deleted!');
+            $request->session()->flash('uuid', $visitorUuid);
+
+            return back();
+        } else {
+            return redirect()->route('home');
+        }
+    }
+
 }

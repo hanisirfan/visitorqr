@@ -4,7 +4,7 @@
     <div class="modal text-dark fade" id="{{ 'delete-visitor-modal-' . $visitorUuid}}" tabindex="-1" aria-labelledby="{{ 'delete-visitor-modal-' . $visitorUuid . '-label'}}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="{{ route('home') }}" method="post">
+                <form action="{{ route('visitors.delete') }}" method="post">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="{{ 'delete-user-modal-' . $visitorUuid . '-label'}}">{{ __('Delete Visitor') }}</h5>
@@ -21,7 +21,7 @@
                             </span>
                         </p>
 
-                        <input type="text" name="username" id="username" value="" hidden>
+                        <input type="text" name="delete-visitor-uuid" id="delete-visitor-uuid" value="{{ $visitorUuid }}" hidden>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
