@@ -20,8 +20,38 @@
 
     `php artisan install PASSWORD USER_NAME EMAIL_ADDRESS`
 
+## Deleting Visitors By Its Age
+
+You can remove visitors that have a certain age (in seconds) after their addition to the system. You can do that by running the artisan `deleteVisitorByAge` command. Run `php artisan help deleteVisitorByAge` for more info.
+
+To schedule `deleteVisitorByAge` command, you need to define it in `app/Console/Kernel.php` file's schedule method. For example:
+```
+protected function schedule(Schedule $schedule)
+{
+    $schedule->command('deleteVisitorByAge --days=3')
+    ->daily()
+    ->runInBackground();
+}
+```
+
+This will schedule the deletion of visitors that are 3 days old every day at midnight.
+
+To running the actual Laravel Scheduler, add a single cron entry to your server to run `schedule:run` command every minute.
+
+```
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+Refer [this article](https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/) on how to add Cron entries in Linux.
+
+Refer [Laravel documentation](https://laravel.com/docs/9.x/scheduling#scheduling-artisan-commands) for more info in task scheduling.
+
+### Logs
+
+All logs of `deleteVisitorByAge` command are stored in `storage/logs/deleteVisitorByAgeCommand.log` file.
+
 ## Copyright
 
-Copyright (c) 2022 Muhammad Hanis Irfan Bin Mohd Zaid a.k.a. Hanis Irfan.
+Copyright (c) 2022 Muhammad Hanis Irfan Bin Mohd Zaid.
 
 Licensed under the MIT license.
