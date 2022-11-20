@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->isMethod('get')) {
-            $pagination = 5;
+            $pagination = 7;
 
             $visitors = Visitor::orderBy('created_at', 'DESC')->paginate($pagination)->withQueryString();
 
