@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\Visitor;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class DeleteVisitorByAge extends Command
 {
@@ -72,6 +73,7 @@ class DeleteVisitorByAge extends Command
         $totalAgeInSeconds = $optionSeconds + $optionMinutes + $optionHours + $optionDays + $optionWeeks;
 
         $this->info('<fg=black;bg=white>Total age limit in seconds: ' . $totalAgeInSeconds);
+        Log::channel('deleteVisitorByAgeCommand')->info('Total age limit in seconds: ' . $totalAgeInSeconds);
 
         if (Visitor::first()) {
 
@@ -89,12 +91,14 @@ class DeleteVisitorByAge extends Command
                 if ($visitorAgeInSeconds > $totalAgeInSeconds) {
 
                     Visitor::where('uuid', $visitor->uuid)->delete();
-                    $this->info('<fg=black;bg=white>Deleting visitor because the age (in seconds) is more than limit defined when running the command.');
+                    $this->info('<fg=black;bg=white>Deleted visitor with UUID: ' . $visitor->uuid);
+                    Log::channel('deleteVisitorByAgeCommand')->info('Deleted visitor with UUID: ' . $visitor->uuid);
                 }
                 $this->info('-----------------------------------------------------------');
             }
         } else {
-            $this->error('No visitors found.');
+            $this->info('No visitors found.');
+            Log::channel('deleteVisitorByAgeCommand')->info('No visitors found.');
         }
 
         return Command::SUCCESS;
