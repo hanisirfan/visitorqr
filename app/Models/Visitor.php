@@ -92,4 +92,39 @@ class Visitor extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * Relationships
+     */
+
+    /**
+     * Get the user that added the visitor.
+     */
+    public function addedByUser()
+    {
+        return $this->belongsTo(User::class, 'added_by')->withDefault([
+            'name' => 'N/A',
+        ]);
+    }
+
+    /**
+     * Get the user that verified visitor check in.
+     */
+    public function checkInVerifiedByUser()
+    {
+        return $this->belongsTo(User::class, 'check_in_verified_by')->withDefault([
+            'name' => 'N/A',
+        ]);
+    }
+
+
+    /**
+     * Get the user that verified visitor check out.
+     */
+    public function checkOutVerifiedByUser()
+    {
+        return $this->belongsTo(User::class, 'check_out_verified_by')->withDefault([
+            'name' => 'N/A',
+        ]);
+    }
 }
