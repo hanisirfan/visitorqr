@@ -25,7 +25,9 @@
                                     <th scope="col" class="align-top">{{ __('QR Code') }}</th>
                                     <th scope="col" class="align-top">{{ __('UUID') }}</th>
                                     <th scope="col" class="align-top">{{ __('Name') }}</th>
-                                    <th scope="col" class="align-top">{{ __('Access Date & Time') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Access Requested') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Check In') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Check Out') }}</th>
                                     <th scope="col" class="align-top">{{ __('View') }}</th>
                                     <th scope="col" class="align-top">{{ __('Update') }}</th>
                                     <th scope="col" class="align-top">{{ __('Delete') }}</th>
@@ -40,10 +42,16 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <p>{{ $visitor->uuid }}</p>
+                                                <p>{{ Str::limit($visitor->uuid, 12) }}</p>
                                             </td>
                                             <td>
                                                 <p>{{ $visitor->name }}</p>
+                                            </td>
+                                            <td>
+                                                <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
+                                            </td>
+                                            <td>
+                                                <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
                                             </td>
                                             <td>
                                                 <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />

@@ -19,5 +19,6 @@
     </div>
 </div>
 <!-- Scripts -->
+<div id="scanner-type" data-scanner-type="check-out"></div>
 @vite(['resources/js/scanner.js'])
 @endsection

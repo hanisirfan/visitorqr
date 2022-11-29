@@ -13,8 +13,23 @@ function onScanSuccess(decodedText, decodedResult) {
     } else {
         let parsedUID = decodedText.split(": ")[1];
 
-        // Redirect to QR code data page
-        window.location.href = "/visitors/view/" + parsedUID;
+        // Redirect to QR code data page or check in/out page
+        let scanner = document.getElementById("scanner-type");
+        var scannerType = scanner.getAttribute("data-scanner-type");
+        switch (scannerType) {
+            case "details":
+                window.location.href = "/visitors/view/" + parsedUID;
+                break;
+            case "check-in":
+                window.location.href = "/visitors/checkin/verify/" + parsedUID;
+                break;
+            case "check-out":
+                window.location.href = "/visitors/checkout/verify/" + parsedUID;
+                break;
+            default:
+                window.location.href = "/visitors/view/" + parsedUID;
+                break;
+        }
     }
   }
 
