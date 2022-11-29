@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div class="d-flex justify-content-center align-items-center">
-                        <div id="reader" width="500px" class="border border-dark border-2"></div>
+                        <div id="reader" width="1000px" class="border border-dark border-2"></div>
                     </div>
                     <p class="mt-5 text-center text-danger fw-bold" hidden id="qr-error">{{ __('QR code format not recognised.') }}</p>
                     <p class="mt-5 text-center">{{ __('Please allow the request to access your device camera in order to scan QR codes.') }}</p>
