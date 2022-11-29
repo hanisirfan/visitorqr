@@ -6,6 +6,7 @@ use App\Models\Visitor;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use chillerlan\QRCode\QRCode;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class VisitorController extends Controller
@@ -80,7 +81,6 @@ class VisitorController extends Controller
         }
     }
 
-
     public function delete(Request $request) {
         if ($request->isMethod('post')) {
 
@@ -97,6 +97,92 @@ class VisitorController extends Controller
             return back();
         } else {
             return redirect()->route('home');
+        }
+    }
+
+    public function checkInVerify(Request $request, $uuid) {
+        if ($request->isMethod('post')) {
+            if (Visitor::where('uuid', $uuid)->first()) {
+
+                $visitor = Visitor::where('uuid', $uuid)->first();
+                // Checks if visitor check in already verified.
+                if (!empty($visitor->check_in_date_time_carbon)) {
+
+                    return redirect()->route('visitors.check.in.verify', ['uuid' => $uuid]);
+
+                } else {
+
+                    $dateTimeNow = Carbon::now();
+
+                    Visitor::where('uuid', $uuid)
+                    ->update([
+                        'check_in_datetime' => $dateTimeNow,
+                        'check_in_verified_by' => Auth::user()->id
+                    ]);
+
+                    $request->session()->flash('verifyVisitorCheckInSuccess', 'Visitor check in is successfully verified!');
+
+                    return back();
+
+                }
+
+            } else {
+                return abort(404);
+            }
+        }
+
+        if ($request->isMethod('get')) {
+            // Check if visitor exists.
+            if (Visitor::where('uuid', $uuid)->first()) {
+                $visitor = Visitor::where('uuid', $uuid)->first();
+
+                return view('visitors.check.in')->with(['visitor' => $visitor]);
+            } else {
+                return abort(404);
+            }
+        }
+    }
+
+    public function checkOutVerify(Request $request, $uuid) {
+        if ($request->isMethod('post')) {
+            if (Visitor::where('uuid', $uuid)->first()) {
+
+                $visitor = Visitor::where('uuid', $uuid)->first();
+                // Checks if visitor check out already verified.
+                if (!empty($visitor->check_out_date_time_carbon)) {
+
+                    return redirect()->route('visitors.check.out.verify', ['uuid' => $uuid]);
+
+                } else {
+
+                    $dateTimeNow = Carbon::now();
+
+                    Visitor::where('uuid', $uuid)
+                    ->update([
+                        'check_out_datetime' => $dateTimeNow,
+                        'check_out_verified_by' => Auth::user()->id
+                    ]);
+
+                    $request->session()->flash('verifyVisitorCheckOutSuccess', 'Visitor check out is successfully verified!');
+
+                    return back();
+
+                }
+
+            } else {
+                return abort(404);
+            }
+        }
+
+        if ($request->isMethod('get')) {
+            // Check if visitor exists.
+            if (Visitor::where('uuid', $uuid)->first()) {
+                $visitor = Visitor::where('uuid', $uuid)->first();
+
+                return view('visitors.check.out')->with(['visitor' => $visitor]);
+            } else {
+                return abort(404);
+            }
         }
     }
 
