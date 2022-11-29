@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><i class="bi bi-card-text"></i> {{ __('QR Scanner Visitor Details') }}</div>
+                <div class="card-header"><i class="bi bi-box-arrow-right"></i> {{ __('QR Scanner Check In') }}</div>
 
                 <div class="card-body">
                     <div class="d-flex justify-content-center align-items-center">

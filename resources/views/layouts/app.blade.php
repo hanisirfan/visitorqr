@@ -51,8 +51,22 @@
                                 <a class="nav-link" href="{{ route('home') }}"><i class="bi bi-house"></i> {{ __('Home') }}</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('scanner') }}"><i class="bi bi-qr-code-scan"></i> {{ __('Scan Visitor QR') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="bi bi-qr-code-scan"></i> {{ __('Scan Visitor QR') }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('scanner') }}">
+                                        <i class="bi bi-card-text"></i> {{ __('Visitor Details') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('scanner.check.in') }}">
+                                        <i class="bi bi-box-arrow-right"></i> {{ __('Check In') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('scanner.check.out') }}">
+                                        <i class="bi bi-box-arrow-left"></i> {{ __('Check Out') }}
+                                    </a>
+                                </div>
                             </li>
 
                             <li class="nav-item">

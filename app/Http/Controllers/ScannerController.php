@@ -25,4 +25,14 @@ class ScannerController extends Controller
     {
         return view('scanner.scanner');
     }
+
+    public function checkin()
+    {
+        return view('scanner.check.in');
+    }
+
+    public function checkout()
+    {
+        return view('scanner.check.out');
+    }
 }

@@ -31,3 +31,5 @@ Route::get('/visitors/delete', [VisitorController::class, 'delete'])->name('visi
 Route::post('/visitors/delete', [VisitorController::class, 'delete']);
 
 Route::get('/scanner', [ScannerController::class, 'index'])->name('scanner');
+Route::get('/scanner/checkin', [ScannerController::class, 'checkin'])->name('scanner.check.in');
+Route::get('/scanner/checkout', [ScannerController::class, 'checkout'])->name('scanner.check.out');
