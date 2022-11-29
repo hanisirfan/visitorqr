@@ -15,7 +15,7 @@ class Visitor extends Model
 
     protected $primaryKey = 'uuid';
 
-    protected $appends = ['qr', 'date_time'];
+    protected $appends = ['qr', 'date_time', 'check_in_date_time_carbon', 'check_out_date_time_carbon'];
 
     /**
      * Generate QR based on UUIDs
@@ -26,11 +26,39 @@ class Visitor extends Model
     }
 
     /**
-     * Generate QR based on UUIDs
+     * Convert visit_datetime string from DB to DateTime object
      *
      */
     public function getDateTimeAttribute() {
         return new DateTime($this->visit_datetime);
+    }
+
+    /**
+     * Convert check_in_datetime from DB to DateTime object
+     *
+     */
+    public function getCheckInDateTimeCarbonAttribute() {
+
+        if (!empty($this->check_in_datetime)) {
+            return new DateTime($this->check_in_datetime);
+        } else {
+            return '';
+        }
+
+    }
+
+    /**
+     * Convert check_out_datetime from DB to DateTime object
+     *
+     */
+    public function getCheckOutDateTimeCarbonAttribute() {
+
+        if (!empty($this->check_out_datetime)) {
+            return new DateTime($this->check_out_datetime);
+        } else {
+            return '';
+        }
+
     }
 
     /**
@@ -45,6 +73,10 @@ class Visitor extends Model
         'vehicle_plate_number',
         'visit_datetime',
         'added_by',
+        'check_in_datetime',
+        'check_in_verified_by',
+        'check_out_datetime',
+        'check_out_verified_by'
     ];
 
     /**

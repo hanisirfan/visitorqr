@@ -51,10 +51,18 @@
                                                 <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
                                             </td>
                                             <td>
-                                                <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
+                                                @if(!empty($visitor->check_in_date_time_carbon))
+                                                    <x-carbon :date="$visitor->check_in_date_time_carbon" format="d/m/Y h:i A" />
+                                                @else
+                                                    N/A
+                                                @endif
                                             </td>
                                             <td>
-                                                <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
+                                                @if(!empty($visitor->check_out_date_time_carbon))
+                                                    <x-carbon :date="$visitor->check_out_date_time_carbon" format="d/m/Y h:i A" />
+                                                @else
+                                                    N/A
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('visitors.view', $visitor->uuid) }}" class="btn btn-dark"><i class="bi bi-eye"></i></a>
