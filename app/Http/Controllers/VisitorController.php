@@ -56,7 +56,7 @@ class VisitorController extends Controller
             $icNumber = $request->input('visitor-ic-number');
             $plateNumber = $request->input('visitor-vehicle-plate-number');
             $accessDateTime = $request->input('visitor-datetime');
-            $userName = Auth::user()->name;
+            $userId = Auth::user()->id;
 
             $visitor = Visitor::create([
                 'uuid' => $uuid,
@@ -64,7 +64,7 @@ class VisitorController extends Controller
                 'ic_number' => $icNumber,
                 'vehicle_plate_number' => $plateNumber,
                 'visit_datetime' => $accessDateTime,
-                'added_by' => $userName,
+                'added_by' => $userId,
             ]);
 
             $request->session()->flash('addVisitorSuccess', 'Visitor successfully added!');
