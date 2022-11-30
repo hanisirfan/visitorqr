@@ -4,7 +4,9 @@ namespace App\Models;
 
 use DateTime;
 use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
 use Illuminate\Database\Eloquent\Model;
+use chillerlan\QRCode\Output\QROutputInterface;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,7 +24,13 @@ class Visitor extends Model
      *
      */
     public function getQRAttribute() {
-        return (new QRCode())->render('visitorqr: ' . $this->uuid);
+        $options = new QROptions([
+            'version'    => 5,
+            'outputType' => QRCode::OUTPUT_IMAGE_PNG,
+            'eccLevel'   => QRCode::ECC_L,
+            'imageTransparent' => false,
+        ]);
+        return (new QRCode($options))->render('visitorqr: ' . $this->uuid);
     }
 
     /**
