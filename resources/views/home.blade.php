@@ -25,7 +25,9 @@
                                     <th scope="col" class="align-top">{{ __('QR Code') }}</th>
                                     <th scope="col" class="align-top">{{ __('UUID') }}</th>
                                     <th scope="col" class="align-top">{{ __('Name') }}</th>
-                                    <th scope="col" class="align-top">{{ __('Access Date & Time') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Access Requested') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Check In') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Check Out') }}</th>
                                     <th scope="col" class="align-top">{{ __('View') }}</th>
                                     <th scope="col" class="align-top">{{ __('Update') }}</th>
                                     <th scope="col" class="align-top">{{ __('Delete') }}</th>
@@ -40,13 +42,27 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <p>{{ $visitor->uuid }}</p>
+                                                <p>{{ Str::limit($visitor->uuid, 12) }}</p>
                                             </td>
                                             <td>
                                                 <p>{{ $visitor->name }}</p>
                                             </td>
                                             <td>
                                                 <x-carbon :date="$visitor->date_time" format="d/m/Y h:i A" />
+                                            </td>
+                                            <td>
+                                                @if(!empty($visitor->check_in_date_time_carbon))
+                                                    <x-carbon :date="$visitor->check_in_date_time_carbon" format="d/m/Y h:i A" />
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if(!empty($visitor->check_out_date_time_carbon))
+                                                    <x-carbon :date="$visitor->check_out_date_time_carbon" format="d/m/Y h:i A" />
+                                                @else
+                                                    N/A
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('visitors.view', $visitor->uuid) }}" class="btn btn-dark"><i class="bi bi-eye"></i></a>

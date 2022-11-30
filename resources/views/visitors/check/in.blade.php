@@ -5,8 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><i class="bi bi-card-text"></i> {{ __('Visitor Details') }}</div>
+                <div class="card-header"><i class="bi bi-box-arrow-right"></i> {{ __('Visitor Check In') }}</div>
                 <div class="card-body">
+                    @if(session()->has('verifyVisitorCheckInSuccess'))
+                        <span>
+                            <div class="alert alert-success w-100 ml-1">
+                                <p class="fw-bold">{{ session('verifyVisitorCheckInSuccess') }}</p>
+                            </div>
+                        </span>
+                    @endif
                     <div class="mb-3">
                         <i class="bi bi-fonts"></i> <span class="fw-bold">{{ __('Name') }}</span> <span>: {{ $visitor->name }}</span>
                     </div>
@@ -27,8 +34,8 @@
 
                         <hr>
 
-                        <div class="my-2">
-                            <p class="text-decoration-underline"><i class="bi bi-box-arrow-right"></i> <span class="fw-bold">{{ __('Checked In') }}</span></p>
+                        <div class="alert alert-danger w-100 ml-1">
+                            <p class="fw-bold">{{ __('Visitor is already checked in!') }}</p>
                             @if (!empty($visitor->check_in_date_time_carbon))
                                 <p class="fw-bold"><i class="bi bi-clock fw-normal"></i> {{ __('Date & Time') }}: <x-carbon class="fw-normal" :date="$visitor->check_in_date_time_carbon" format="d/m/Y h:i A" /></p>
                             @endif
@@ -37,24 +44,21 @@
                             @endif
                         </div>
 
-                        @if(!empty($visitor->check_out_date_time_carbon))
+                        <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
 
-                            <hr>
+                    @else
 
-                            <div class="my-2">
-                                <p class="text-decoration-underline"><i class="bi bi-box-arrow-left"></i> <span class="fw-bold">{{ __('Checked Out') }}</span></p>
-                                @if (!empty($visitor->check_out_date_time_carbon))
-                                    <p class="fw-bold"><i class="bi bi-clock fw-normal"></i> {{ __('Date & Time') }}: <x-carbon class="fw-normal" :date="$visitor->check_out_date_time_carbon" format="d/m/Y h:i A" /></p>
-                                @endif
-                                @if (!empty($visitor->check_out_verified_by))
-                                    <p class="fw-bold"><i class="bi bi-person fw-normal"></i> {{ __('Verified by') }}: <span class="fw-normal">{{ $visitor->checkOutVerifiedByUser->name }}</span></p>
-                                @endif
+                        <form action="" method="POST" class="mt-3">
+                            @csrf
+                            <div class="mb-1">
+                                <button type="submit" class="btn btn-success"><i class="bi bi-check"></i> {{ __('Verify Visitor Check In') }}</button>
                             </div>
+                            <div class="mb-3">
+                                <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
+                            </div>
+                        </form>
 
-                        @endif
                     @endif
-
-                    <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
                 </div>
             </div>
         </div>

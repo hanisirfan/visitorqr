@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><i class="bi bi-card-text"></i> {{ __('QR Scanner Visitor Details') }}</div>
+                <div class="card-header"><i class="bi bi-box-arrow-left"></i> {{ __('QR Scanner Check Out') }}</div>
 
                 <div class="card-body">
                     <div class="d-flex justify-content-center align-items-center">
@@ -19,6 +19,6 @@
     </div>
 </div>
 <!-- Scripts -->
-<div id="scanner-type" data-scanner-type="details"></div>
+<div id="scanner-type" data-scanner-type="check-out"></div>
 @vite(['resources/js/scanner.js'])
 @endsection

@@ -29,5 +29,11 @@ Route::get('/visitors/add', [VisitorController::class, 'create'])->name('visitor
 Route::post('/visitors/add', [VisitorController::class, 'create']);
 Route::get('/visitors/delete', [VisitorController::class, 'delete'])->name('visitors.delete');
 Route::post('/visitors/delete', [VisitorController::class, 'delete']);
+Route::get('/visitors/checkin/verify/{uuid}', [VisitorController::class, 'checkInVerify'])->name('visitors.check.in.verify');
+Route::post('/visitors/checkin/verify/{uuid}', [VisitorController::class, 'checkInVerify']);
+Route::get('/visitors/checkout/verify/{uuid}', [VisitorController::class, 'checkOutVerify'])->name('visitors.check.out.verify');
+Route::post('/visitors/checkout/verify/{uuid}', [VisitorController::class, 'checkOutVerify']);
 
 Route::get('/scanner', [ScannerController::class, 'index'])->name('scanner');
+Route::get('/scanner/checkin', [ScannerController::class, 'checkin'])->name('scanner.check.in');
+Route::get('/scanner/checkout', [ScannerController::class, 'checkout'])->name('scanner.check.out');
