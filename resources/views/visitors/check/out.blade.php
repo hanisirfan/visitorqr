@@ -30,10 +30,15 @@
                         <p class="fw-bold"><i class="bi bi-person fw-normal"></i> {{ __('Added by') }}: <span class="fw-normal">{{ $visitor->addedByUser->name }}</span></p>
                     </div>
 
-                    @if(!empty($visitor->check_out_date_time_carbon))
+                    <hr>
 
-                        <hr>
-
+                    {{-- Checks if visitor is checked in --}}
+                    @if(empty($visitor->check_in_date_time_carbon))
+                        <div class="alert alert-danger w-100 ml-1">
+                            <p class="fw-bold">{{ __('Visitor must be checked in to check out!') }}</p>
+                        </div>
+                    {{-- Checks if visitor already checked out --}}
+                    @elseif(!empty($visitor->check_out_date_time_carbon))
                         <div class="alert alert-danger w-100 ml-1">
                             <p class="fw-bold">{{ __('Visitor is already checked out!') }}</p>
                             @if (!empty($visitor->check_out_date_time_carbon))
@@ -43,22 +48,17 @@
                                 <p class="fw-bold"><i class="bi bi-person fw-normal"></i> {{ __('Verified by') }}: <span class="fw-normal">{{ $visitor->checkOutVerifiedByUser->name }}</span></p>
                             @endif
                         </div>
-
-                        <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
-
                     @else
-
                         <form action="" method="POST" class="mt-3">
                             @csrf
                             <div class="mb-1">
                                 <button type="submit" class="btn btn-success"><i class="bi bi-check"></i> {{ __('Verify Visitor Check Out') }}</button>
                             </div>
-                            <div class="mb-3">
-                                <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
-                            </div>
                         </form>
-
                     @endif
+                    <div class="mb-3">
+                        <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
+                    </div>
                 </div>
             </div>
         </div>

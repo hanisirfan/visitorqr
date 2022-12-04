@@ -120,7 +120,7 @@ class VisitorController extends Controller
                         'check_in_verified_by' => Auth::user()->id
                     ]);
 
-                    $request->session()->flash('verifyVisitorCheckInSuccess', 'Visitor check in is successfully verified!');
+                    $request->session()->flash('verifyVisitorCheckInSuccess', 'Visitor check in successfully verified!');
 
                     return back();
 
@@ -154,19 +154,24 @@ class VisitorController extends Controller
                     return redirect()->route('visitors.check.out.verify', ['uuid' => $uuid]);
 
                 } else {
+                    // Checks if visitor is checked in. If true, continue, if false, return
+                    if (!empty($visitor->check_in_date_time_carbon)) {
 
-                    $dateTimeNow = Carbon::now();
+                        $dateTimeNow = Carbon::now();
 
-                    Visitor::where('uuid', $uuid)
-                    ->update([
-                        'check_out_datetime' => $dateTimeNow,
-                        'check_out_verified_by' => Auth::user()->id
-                    ]);
+                        Visitor::where('uuid', $uuid)
+                        ->update([
+                            'check_out_datetime' => $dateTimeNow,
+                            'check_out_verified_by' => Auth::user()->id
+                        ]);
 
-                    $request->session()->flash('verifyVisitorCheckOutSuccess', 'Visitor check out is successfully verified!');
+                        $request->session()->flash('verifyVisitorCheckOutSuccess', 'Visitor check out successfully verified!');
 
-                    return back();
+                        return back();
 
+                    } else {
+                        return redirect()->route('visitors.check.out.verify', ['uuid' => $uuid]);
+                    }
                 }
 
             } else {
