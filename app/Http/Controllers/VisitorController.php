@@ -81,6 +81,66 @@ class VisitorController extends Controller
         }
     }
 
+    public function edit(Request $request, $uuid)
+    {
+
+        if ($request->isMethod('post')) {
+            // Check if visitor exists.
+            if (Visitor::where('uuid', $uuid)->first()) {
+                $visitor = Visitor::where('uuid', $uuid)->first();
+
+                // Visitor can't be edited if they already checked in.
+                if (!empty($visitor->check_in_date_time_carbon)) {
+                    abort(403, 'Visitor cannot be edited after they checked in!');
+                } else {
+                    $validated = $request->validate([
+                        'visitor-name' => ['required'],
+                        'visitor-ic-number' => ['required'],
+                        'visitor-vehicle-plate-number' => ['required'],
+                        'visitor-datetime' => ['required'],
+                    ]);
+
+                    $name = $request->input('visitor-name');
+                    $icNumber = $request->input('visitor-ic-number');
+                    $plateNumber = $request->input('visitor-vehicle-plate-number');
+                    $accessDateTime = $request->input('visitor-datetime');
+
+                    $visitor = Visitor::where('uuid', $uuid)
+                    ->update([
+                        'uuid' => $uuid,
+                        'name' => $name,
+                        'ic_number' => $icNumber,
+                        'vehicle_plate_number' => $plateNumber,
+                        'visit_datetime' => $accessDateTime,
+                    ]);
+
+                    $request->session()->flash('editVisitorSuccess', 'Visitor details successfully edited!');
+
+                    $request->session()->flash('uuid', $uuid);
+
+                    return back();
+
+                }
+
+            } else {
+                return abort(404);
+            }
+        }
+
+        if ($request->isMethod('get')) {
+
+            // Check if visitor exists.
+            if (Visitor::where('uuid', $uuid)->first()) {
+                $visitor = Visitor::where('uuid', $uuid)->first();
+
+                return view('visitors.edit')->with(['visitor' => $visitor]);
+            } else {
+                return abort(404);
+            }
+
+        }
+    }
+
     public function delete(Request $request) {
         if ($request->isMethod('post')) {
 

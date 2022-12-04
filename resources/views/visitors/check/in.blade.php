@@ -30,9 +30,9 @@
                         <p class="fw-bold"><i class="bi bi-person fw-normal"></i> {{ __('Added by') }}: <span class="fw-normal">{{ $visitor->addedByUser->name }}</span></p>
                     </div>
 
-                    @if(!empty($visitor->check_in_date_time_carbon))
+                    <hr>
 
-                        <hr>
+                    @if(!empty($visitor->check_in_date_time_carbon))
 
                         <div class="alert alert-danger w-100 ml-1">
                             <p class="fw-bold">{{ __('Visitor is already checked in!') }}</p>
@@ -44,8 +44,6 @@
                             @endif
                         </div>
 
-                        <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
-
                     @else
 
                         <form action="" method="POST" class="mt-3">
@@ -53,12 +51,12 @@
                             <div class="mb-1">
                                 <button type="submit" class="btn btn-success"><i class="bi bi-check"></i> {{ __('Verify Visitor Check In') }}</button>
                             </div>
-                            <div class="mb-3">
-                                <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
-                            </div>
                         </form>
 
                     @endif
+                    <div class="mb-3">
+                        <a href="{{ route('home') }}" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i> {{ __('Back to home') }}</a>
+                    </div>
                 </div>
             </div>
         </div>
