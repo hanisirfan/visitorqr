@@ -27,6 +27,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/visitors/view/{uuid}', [VisitorController::class, 'index'])->name('visitors.view');
 Route::get('/visitors/add', [VisitorController::class, 'create'])->name('visitors.add');
 Route::post('/visitors/add', [VisitorController::class, 'create']);
+Route::get('/visitors/edit/{uuid}', [VisitorController::class, 'edit'])->name('visitors.edit');
+Route::post('/visitors/edit/{uuid}', [VisitorController::class, 'edit']);
 Route::get('/visitors/delete', [VisitorController::class, 'delete'])->name('visitors.delete');
 Route::post('/visitors/delete', [VisitorController::class, 'delete']);
 Route::get('/visitors/checkin/verify/{uuid}', [VisitorController::class, 'checkInVerify'])->name('visitors.check.in.verify');
