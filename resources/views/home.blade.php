@@ -29,7 +29,7 @@
                                     <th scope="col" class="align-top">{{ __('Check In') }}</th>
                                     <th scope="col" class="align-top">{{ __('Check Out') }}</th>
                                     <th scope="col" class="align-top">{{ __('View') }}</th>
-                                    <th scope="col" class="align-top">{{ __('Update') }}</th>
+                                    <th scope="col" class="align-top">{{ __('Edit') }}</th>
                                     <th scope="col" class="align-top">{{ __('Delete') }}</th>
                                     </tr>
                                 </thead>
@@ -68,7 +68,7 @@
                                                 <a href="{{ route('visitors.view', $visitor->uuid) }}" class="btn btn-dark"><i class="bi bi-eye"></i></a>
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-secondary"><i class="bi bi-pen"></i></a>
+                                                <a href="{{ route('visitors.edit', $visitor->uuid) }}" class="btn btn-dark"><i class="bi bi-pen"></i></a>
                                             </td>
                                             <td>
                                                 <x-visitors.delete :visitor-uuid="$visitor->uuid"/>

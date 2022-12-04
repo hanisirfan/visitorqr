@@ -39,15 +39,19 @@
                         </div>
                     {{-- Checks if visitor already checked out --}}
                     @elseif(!empty($visitor->check_out_date_time_carbon))
-                        <div class="alert alert-danger w-100 ml-1">
-                            <p class="fw-bold">{{ __('Visitor is already checked out!') }}</p>
-                            @if (!empty($visitor->check_out_date_time_carbon))
-                                <p class="fw-bold"><i class="bi bi-clock fw-normal"></i> {{ __('Date & Time') }}: <x-carbon class="fw-normal" :date="$visitor->check_out_date_time_carbon" format="d/m/Y h:i A" /></p>
-                            @endif
-                            @if (!empty($visitor->check_out_verified_by))
-                                <p class="fw-bold"><i class="bi bi-person fw-normal"></i> {{ __('Verified by') }}: <span class="fw-normal">{{ $visitor->checkOutVerifiedByUser->name }}</span></p>
-                            @endif
-                        </div>
+
+                        {{-- Prevent double alert messages --}}
+                        @if(!session()->has('verifyVisitorCheckOutSuccess'))
+                            <div class="alert alert-danger w-100 ml-1">
+                                <p class="fw-bold">{{ __('Visitor is already checked out!') }}</p>
+                                @if (!empty($visitor->check_out_date_time_carbon))
+                                    <p class="fw-bold"><i class="bi bi-clock fw-normal"></i> {{ __('Date & Time') }}: <x-carbon class="fw-normal" :date="$visitor->check_out_date_time_carbon" format="d/m/Y h:i A" /></p>
+                                @endif
+                                @if (!empty($visitor->check_out_verified_by))
+                                    <p class="fw-bold"><i class="bi bi-person fw-normal"></i> {{ __('Verified by') }}: <span class="fw-normal">{{ $visitor->checkOutVerifiedByUser->name }}</span></p>
+                                @endif
+                            </div>
+                        @endif
                     @else
                         <form action="" method="POST" class="mt-3">
                             @csrf
