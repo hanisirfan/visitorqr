@@ -30,6 +30,17 @@
 
     The image ratio is 1x1. Finish the logo replacement by running `npm run build` command to rebuild the assets.
 
+## Troubleshooting
+
+### File Permission Error
+
+If you encountered an issue with file permission, make sure you change the owner and group of this system directory on your file system.
+
+For NGINX running on Ubuntu, you can run these commands on this system directory assuming NGINX user and group is `www-data`:
+
+- `sudo chown -R www-data:www-data *`
+- `sudo chown www-data:www-data .*`
+
 ## Deleting Visitors By Its Age
 
 You can remove visitors that have a certain age (in seconds) after their addition to the system. You can do that by running the artisan `deleteVisitorByAge` command. Run `php artisan help deleteVisitorByAge` for more info.
