@@ -4,7 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'visitorqr') }}</title>
+        <title>
+            @if(!empty(env('ORG_NAME', 'visitorqr')))
+                {{ env('ORG_NAME', 'visitorqr') }}
+            @else
+                {{ __('visitorqr') }}
+            @endif
+        </title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,7 +32,13 @@
             <div class="container w-75 text-center">
                 <div class="row d-flex justify-content-center align-items-center">
                     <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 10em">
-                    <h1 class="m-0 fw-bold">{{ config('app.name', 'visitorqr') }}</h1>
+                    <h1 class="mt-3 fw-bold">
+                        @if(!empty(env('ORG_NAME', 'visitorqr')))
+                            {{ env('ORG_NAME', 'visitorqr') }}
+                        @else
+                            {{ __('visitorqr') }}
+                        @endif
+                    </h1>
                 </div>
                 <div class="row d-flex gap-4 mt-5 justify-content-center align-items-center">
                     @if (Route::has('login'))

@@ -7,7 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'visitorqr') }}</title>
+    <title>
+        @if(!empty(env('ORG_NAME', 'visitorqr')))
+            {{ env('ORG_NAME', 'visitorqr') }}
+        @else
+            {{ __('visitorqr') }}
+        @endif
+    </title>
+
     {{-- Favicon --}}
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/img/logo/favicon.ico') }}">
 
@@ -25,7 +32,13 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ Vite::asset('resources/img/logo/logo.svg') }}" class="img-fluid" style="width: 2em">
-                    <span class="ms-2 fw-bold">{{ config('app.name', 'Laravel') }}</span>
+                    <span class="ms-2 fw-bold">
+                        @if(!empty(env('ORG_NAME', 'visitorqr')))
+                            {{ env('ORG_NAME', 'visitorqr') }}
+                        @else
+                            {{ __('visitorqr') }}
+                        @endif
+                    </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
