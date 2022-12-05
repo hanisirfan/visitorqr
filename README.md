@@ -20,6 +20,16 @@
 
     `php artisan install PASSWORD USER_NAME EMAIL_ADDRESS`
 
+## Customizations
+
+1. You can replace the title of the system with your organization name by editing `ORG_NAME` inside `.env` file.
+
+2. You may replace the logo used for this system by replacing these files:
+    - `resources/img/logo/favicon.ico`
+    - `resources/img/logo/logo.svg`
+
+    The image ratio is 1x1. Finish the logo replacement by running `npm run build` command to rebuild the assets.
+
 ## Deleting Visitors By Its Age
 
 You can remove visitors that have a certain age (in seconds) after their addition to the system. You can do that by running the artisan `deleteVisitorByAge` command. Run `php artisan help deleteVisitorByAge` for more info.
