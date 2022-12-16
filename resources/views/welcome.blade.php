@@ -55,10 +55,13 @@
                             @endauth
                     @endif
                 </div>
-                <div class="row mt-5 fs-6">
+                <footer class="container-fluid text-center mt-5">
+                    {{-- Please DO NOT remove or change the copyright notice on this footer. While I believe you can legally remove the notice, it will be good way
+                    to give credit to the original author :) - Hanis Irfan
+                    https://softwareengineering.stackexchange.com/questions/180784/is-it-okay-to-remove-copyright-info-from-a-free-open-source-api-even-if-you-are --}}
                     <a href="https://github.com/hanisirfan/visitorqr" class="p-0 m-0 text-dark">{{ config('app.name', 'visitorqr') }} {{ env('APP_VERSION', 'v0.1.0-beta') }}</a>
                     <p>Copyright © <a href="https://www.hanisirfan.xyz" class="text-dark">Hanis Irfan</a> {{ env('COPYRIGHT_YEAR', '2022') }}</p>
-                </div>
+                </footer>
             </div>
         </div>
     </body>
